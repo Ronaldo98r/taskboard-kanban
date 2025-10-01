@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <!-- Define que o documento é HTML5 e a língua principal é português (Brasil) -->
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Suporte para acentos e caracteres especiais -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Faz o site ser responsivo em telas pequenas -->
+    <title>TaskBoard - kanban</title>
+    <!-- Título que aparece na aba do navegador -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Importa o arquivo de estilos CSS -->
+  </head>
+  <body>
+    <!-- HEADER: topo fixo com o nome do projeto -->
+    <header class="header">
+      <h1>TaskBoard</h1>
+
+      <!-- Área de ações: input + botão -->
+      <div class="actions">
+        <input id="new-task" type="text" placeholder="Nova tarefa..." />
+        <button id="add-task" aria-label="Adicionar tarefa">Adicionar</button>
+        <input id="task-date" type="date" />
+      </div>
+      <!-- Título exibido na barra superior -->
+    </header>
+
+    <!-- BOARD: área principal que terá as colunas do kanban -->
+    <main class="board">
+      <!-- coluna 1: tarefas ainda não iniciadas -->
+      <section class="column">
+        <h2>A Fazer</h2>
+        <ul id="list-todo"></ul>
+      </section>
+
+      <!-- Coluna 2: tarefas em andamento -->
+      <section class="column">
+        <h2>Em Progresso</h2>
+        <ul id="list-doing"></ul>
+      </section>
+
+      <!-- Coluna 3: tarefas finalizandas -->
+      <section class="column">
+        <h2>Concluído</h2>
+        <ul id="list-done"></ul>
+      </section>
+    </main>
+    <!-- Arquivo JS -->
+    <script src="script.js"></script>
+  </body>
+</html>

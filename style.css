@@ -1,0 +1,204 @@
+/* ===== RESET BÁSICO ===== */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0; /* remove margens padrão */
+  font-family: system-ui, Arial, sans-serif; /* fonte padrão */
+  background: #f4f5f7; /* fundo cinza claro */
+  color: #111827; /* texto cinza escuro */
+}
+
+/* ===== HEADER ===== */
+.header {
+  position: sticky; /* gruda no topo ao rolar */
+  top: 0;
+  display: flex; /* coloca título e ações lado a lado */
+  justify-content: space-between; /* título à esquerda, ações à direita */
+  align-items: center; /* centraliza verticalmente */
+  padding: 12px 16px;
+  background: #5c88d3; /* fundo azul-escuro */
+  color: #fff; /* texto branco */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* sombra suave */
+}
+
+/* ===== AÇÕES NO HEADER (input + botão) ===== */
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Campo de texto */
+.actions input {
+  width: 240px;
+  max-width: 50vw; /* largura máxima no desktop, mas adapta no mobile */
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+}
+
+/* Botão azul */
+.actions button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: #050b17; /* azul padrão */
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+.actions button:hover {
+  background: #1847cb; /* azul mais escuro no hover */
+}
+
+/* ===== BOARD (área com as colunas) ===== */
+.board {
+  display: grid; /* define layout em grid */
+  gap: 16px; /* espaço entre colunas */
+  padding: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 colunas iguais */
+  max-width: 1200px; /* limite máximo da largura */
+  margin: 16px auto; /* centraliza */
+}
+
+/* ===== COLUNAS ===== */
+.column {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 12px;
+  min-height: 300px; /* altura mínima */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* sombra leve */
+}
+
+/* Título das colunas */
+.column h2 {
+  margin: 4px 8px 0;
+  font-size: 1rem;
+  color: #111827;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+/* Tablet: 2 colunas */
+@media (max-width: 900px) {
+  .board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Celular: 1 coluna */
+@media (max-width: 620px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Lista de Tarefas ===== */
+#list-todo,
+#list-doing,
+#list-done {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* === Botão de excluir dentro da tarefa ===== */
+.task {
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between; /* texto à esquerda, botão à direita */
+  align-items: center;
+}
+
+.task button {
+  background: #ef4444; /* vermelho */
+  border: none;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+.task button:hover {
+  background: #dc2626; /* vermelho mais escuro */
+}
+
+/* Quando uma coluna está sendo alvo do drag */
+.column.drag-over {
+  outline: 2px dashed #2563eb;
+  outline-offset: 6px;
+}
+
+/*  Enqundo o cartão está sendo arrastado */
+.task.draggain {
+  opacity: 0.6;
+}
+
+/* ===== Botões das tarefas ===== */
+.card button {
+  margin-left: 6px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+/* Botão excluir (X) */
+.card button:first-of-type {
+  background: #ef4444; /* vermelho */
+  color: white;
+}
+.card button:first-of-type:hover {
+  background: #dc2626; /* vermelho mais escuro */
+}
+
+/* Botão avançar */
+.card button:last-of-type {
+  background: #10b981; /* verde */
+  color: white;
+}
+.card button:last-of-type:hover {
+  background: #059669; /* verde mais escuro */
+}
+
+/* Alinhamento do conteúdo de cada tarefa */
+.card {
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 8px 10px;
+  font-size: 0.95rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+
+  display: flex; /* organiza em linha */
+  justify-content: space-between; /* espaço entre texto e botões */
+  align-items: center; /* centraliza verticalmente */
+  gap: 8px; /* espaço entre texto e botões */
+}
+
+.card span {
+  flex: 1;
+  cursor: pointer;
+}
+
+/* Prazo próximo (até 2 dias) e vencido */
+.card.due-soon {
+  background: #fff7ed; /* Laranja bem claro */
+  border-left: 5px solid #fb923c; /* Laranja */
+}
+.card.overdue {
+  background: #fff1f2; /* Vernelho bem claro */
+  border-left: 5px solid #ef4444; /* Vermelho */
+}
