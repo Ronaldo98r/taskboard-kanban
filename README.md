@@ -10,3 +10,7 @@
 
 ## Como rodar
 Abra index.html no navegador (ou use Live Server).
+
+## Demo
+Acesse: https://ronaldo98r.github.io/taskboard-kanban/
+
